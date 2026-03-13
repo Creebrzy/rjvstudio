@@ -1,9 +1,10 @@
+import { getDb } from '@/lib/db';
 export const runtime = 'edge';
 import { NextResponse } from 'next/server';
 import { auth } from '@clerk/nextjs/server';
-import { neon } from '@neondatabase/serverless';
 
-function getDb() { return neon(process.env.DATABASE_URL!); }
+
+function getDb() { return getDb(); }
 
 function processUrl(url: string): { direct_url: string; thumbnail_url: string | null; media_type: string } {
   // YouTube
